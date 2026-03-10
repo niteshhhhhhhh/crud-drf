@@ -1,0 +1,38 @@
+# Root-level ignores for combined Django + React workspace
+
+# Python virtual environments
+.venv/
+venv/
+**/.venv/
+**/venv/
+
+# Python cache and artifacts
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+
+# Django runtime files
+**/*.log
+**/db.sqlite3
+**/db.sqlite3-journal
+**/media/
+**/staticfiles/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Node dependencies and build outputs
+**/node_modules/
+**/build/
+**/coverage/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temp backup if nested backend git metadata is moved
+.git-backend-history-backup/
