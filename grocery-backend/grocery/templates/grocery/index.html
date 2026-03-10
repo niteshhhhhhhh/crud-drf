@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grocery Bud - Django</title>
+    <style>
+      * {
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        background-image: url("https://media.istockphoto.com/id/1173579665/vector/seamless-pattern-supermarket-grocery-store-food-drinks-vegetables-fruits-fish-meat-dairy.jpg?s=612x612&w=0&k=20&c=XQQ9oPb6lx4m32iPIrmb1fzugwqr-WRUJo8nTod1D2Q=");
+        background-repeat: repeat;
+      }
+    </style>
+    <link rel="stylesheet" href="{% static 'grocery/css/global.css' %}?v=20260310" />
+    <link rel="stylesheet" href="{% static 'grocery/css/form.css' %}?v=20260310" />
+    <link rel="stylesheet" href="{% static 'grocery/css/items.css' %}?v=20260310" />
+    <link rel="stylesheet" href="{% static 'grocery/css/single-item.css' %}?v=20260310" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="grocery-bud">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+
+        <h2>
+          Grocery Bud
+          <img src="{% static 'grocery/images/icon.png' %}" alt="grocery icon" />
+        </h2>
+
+        <form method="POST"
+              action="{% if edit_item %}{% url 'grocery:update' edit_item.id %}{% else %}{% url 'grocery:add' %}{% endif %}">
+          {% csrf_token %}
+          <div class="row">
+            <input type="text"
+                   name="name"
+                   placeholder="e.g. milk"
+                   value="{{ edit_item.name|default:'' }}"
+                   {% if edit_item %}autofocus{% endif %} />
+            <button type="submit">{% if edit_item %}Update Item{% else %}Add Item{% endif %}</button>
+            {% if edit_item %}
+              <a href="{% url 'grocery:index' %}" class="cancel-btn">Cancel</a>
+            {% endif %}
+          </div>
+        </form>
+
+        {% if items %}
+          <ul class="list-container">
+            {% for item in items %}
+              <li class="grocery-item {% if item.completed %}checked{% endif %}">
+                <form method="POST" action="{% url 'grocery:toggle' item.id %}" class="toggle-form">
+                  {% csrf_token %}
+                  <button type="submit" class="toggle-btn" aria-label="Toggle item"></button>
+                </form>
+
+                <span class="item-text">{{ item.name }}</span>
+
+                <div class="item-buttons">
+                  <a href="{% url 'grocery:edit' item.id %}" class="edit-btn" title="Edit item">✎</a>
+
+                  <form method="POST" action="{% url 'grocery:delete' item.id %}" class="inline-form">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-btn" title="Delete item">×</button>
+                  </form>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="empty-message">No items in your list. Add something!</p>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

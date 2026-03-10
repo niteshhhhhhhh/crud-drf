@@ -1,0 +1,53 @@
+.row {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: space-between;
+  background: #f1f2f6;
+  border-radius: 30px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.row input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.row button,
+.row .cancel-btn {
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 16px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  margin-left: 5px;
+  min-width: 100px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row button {
+  background: var(--primary-green);
+}
+
+.row button:hover {
+  opacity: 0.9;
+}
+
+.row .cancel-btn {
+  background: var(--delete-red);
+}
+
+.row .cancel-btn:hover {
+  background: #c0392b;
+}

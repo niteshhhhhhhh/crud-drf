@@ -1,0 +1,89 @@
+.grocery-item {
+  list-style: none;
+  font-size: 18px;
+  padding: 12px 8px 12px 20px;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.grocery-item::before {
+  content: "◯";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 12px;
+  left: -12px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.grocery-item.checked {
+  color: var(--text-light);
+  text-decoration: line-through;
+}
+
+.grocery-item.checked::before {
+  content: "✓";
+  color: var(--primary-green);
+}
+
+.toggle-form {
+  margin-right: 10px;
+}
+
+.toggle-btn {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.item-text {
+  flex: 1;
+  text-align: left;
+}
+
+.item-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+  cursor: pointer;
+  font-size: 18px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+}
+
+.edit-btn {
+  color: var(--edit-blue);
+}
+
+.edit-btn:hover {
+  background-color: #ebf5fb;
+  color: #2980b9;
+}
+
+.delete-btn {
+  color: var(--delete-red);
+}
+
+.delete-btn:hover {
+  background-color: #fdedec;
+  color: #c0392b;
+}
