@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background-image: url(https://media.istockphoto.com/id/1173579665/vector/seamless-pattern-supermarket-grocery-store-food-drinks-vegetables-fruits-fish-meat-dairy.jpg?s=612x612&w=0&k=20&c=XQQ9oPb6lx4m32iPIrmb1fzugwqr-WRUJo8nTod1D2Q=);
+  background-repeat: repeat;
+}
+
+:root {
+  --primary-green: #27ae60;
+  --edit-orange: #f39c12;
+  --delete-red: #e74c3c;
+  --text-dark: #2c3e50;
+  --text-light: #95a5a6;
+  --edit-blue: #3498db;
+}
